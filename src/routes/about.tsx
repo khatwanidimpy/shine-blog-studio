@@ -135,7 +135,7 @@ export default function AboutPage() {
           <div className="max-w-3xl">
             <p className="text-xs uppercase tracking-[0.25em] text-primary mb-6">About</p>
             <h1 className="font-serif text-5xl md:text-7xl leading-[1.02] tracking-tight">
-              Dimpy builds infrastructure that stays calm under pressure.
+              Builds infrastructure that stays calm under pressure.
             </h1>
             <div className="mt-8 max-w-2xl space-y-5 text-base md:text-lg leading-relaxed text-muted-foreground">
               <p>
