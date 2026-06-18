@@ -113,6 +113,16 @@ const EXPERIENCE = [
       "Applied AWS security best practices: IAM role design, VPC segmentation, and secure network architecture aligned with compliance requirements.",
     ],
   },
+   {
+    year: "Jan 2023 – Jul 2023",
+    role: "Trainee DevOps Engineer",
+    org: "Narola Infotech Pvt. Ltd, Surat, Gujarat",
+    highlights: [
+      "Built and deployed Dockerized applications using Nginx, Apache, and Tomcat",
+      "Automated operational workflows using Bash scripting",
+      "Assisted in environment setup, debugging, and deployment support",
+    ],
+  },
 ];
 
 export default function AboutPage() {
