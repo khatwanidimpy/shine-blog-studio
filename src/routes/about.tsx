@@ -1,8 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useQuery } from "@tanstack/react-query";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
-import { getProfile } from "@/lib/blog-queries";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
