@@ -1,6 +1,8 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import { ThemeToggle } from "./ThemeToggle";
+
 
 const NAV = [
   { to: "/", label: "Home" },
@@ -32,10 +34,14 @@ export function SiteHeader() {
               </Link>
             );
           })}
+          <ThemeToggle />
         </nav>
-        <button className="md:hidden p-2" onClick={() => setOpen((v) => !v)} aria-label="Menu">
-          {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-        </button>
+        <div className="md:hidden flex items-center gap-2">
+          <ThemeToggle />
+          <button className="p-2" onClick={() => setOpen((v) => !v)} aria-label="Menu">
+            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
+        </div>
       </div>
       {open && (
         <div className="md:hidden border-t border-border">

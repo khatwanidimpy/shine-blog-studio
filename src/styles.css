@@ -141,7 +141,7 @@
   & a { color: var(--color-primary); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
   & blockquote { border-left: 2px solid var(--color-primary); padding-left: 1rem; font-style: italic; color: var(--color-muted-foreground); margin: 1.5rem 0; }
   & code { font-family: var(--font-mono); background: var(--color-muted); padding: 0.1rem 0.35rem; border-radius: 3px; font-size: 0.9em; }
-  & pre { background: oklch(0.96 0.006 80); border: 1px solid var(--color-border); padding: 1rem; border-radius: 6px; overflow-x: auto; margin: 1.25rem 0; }
+  & pre { background: var(--color-muted); border: 1px solid var(--color-border); padding: 1rem; border-radius: 6px; overflow-x: auto; margin: 1.25rem 0; }
   & pre code { background: transparent; padding: 0; }
   & ul, & ol { padding-left: 1.5rem; margin-bottom: 1.25rem; }
   & li { margin-bottom: 0.4rem; }

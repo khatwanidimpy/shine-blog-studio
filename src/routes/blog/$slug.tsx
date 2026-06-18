@@ -11,6 +11,56 @@ import { getBlogBySlug, listPublishedBlogs, signedMediaUrl, readingMinutes } fro
 import { toast } from "sonner";
 
 export const Route = createFileRoute("/blog/$slug")({
+  loader: async ({ params }) => {
+    const blog = await getBlogBySlug(params.slug);
+    if (!blog) throw notFound();
+    const ogImage = blog.featured_image ? await signedMediaUrl(blog.featured_image) : null;
+    return { blog, ogImage };
+  },
+  head: ({ loaderData }) => {
+    const b = loaderData?.blog;
+    if (!b) return {};
+    const title = b.seo_title || `${b.title} — Dimpy`;
+    const desc = b.seo_description || b.short_description || `Essay by ${b.author?.name ?? "Dimpy"} on ${b.category?.name ?? "DevOps"}.`;
+    const canonical = `/blog/${b.slug}`;
+    const meta: any[] = [
+      { title },
+      { name: "description", content: desc },
+      { property: "og:type", content: "article" },
+      { property: "og:title", content: title },
+      { property: "og:description", content: desc },
+      { property: "og:url", content: canonical },
+      { property: "article:published_time", content: b.published_at ?? b.created_at },
+      { property: "article:author", content: b.author?.name ?? "Dimpy" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: title },
+      { name: "twitter:description", content: desc },
+    ];
+    if (loaderData?.ogImage) {
+      meta.push({ property: "og:image", content: loaderData.ogImage });
+      meta.push({ name: "twitter:image", content: loaderData.ogImage });
+    }
+    return {
+      meta,
+      links: [{ rel: "canonical", href: canonical }],
+      scripts: [
+        {
+          type: "application/ld+json",
+          children: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            headline: b.title,
+            description: desc,
+            datePublished: b.published_at ?? b.created_at,
+            dateModified: b.updated_at,
+            author: { "@type": "Person", name: b.author?.name ?? "Dimpy" },
+            image: loaderData?.ogImage ?? undefined,
+            mainEntityOfPage: canonical,
+          }),
+        },
+      ],
+    };
+  },
   component: BlogDetail,
   notFoundComponent: () => (
     <div className="min-h-screen flex items-center justify-center">
