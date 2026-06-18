@@ -6,9 +6,9 @@ import { SiteFooter } from "@/components/site/SiteFooter";
 import { BlogCard } from "@/components/site/BlogCard";
 import { listPublishedBlogs, listCategories } from "@/lib/blog-queries";
 import { Input } from "@/components/ui/input";
-import { Search } from "lucide-react";
+import { Search as SearchIcon } from "lucide-react";
 
-type Search = { category?: string; q?: string; page?: number };
+type SearchParams = { category?: string; q?: string; page?: number };
 
 export const Route = createFileRoute("/blog/")({
   head: () => ({
@@ -20,7 +20,7 @@ export const Route = createFileRoute("/blog/")({
     ],
     links: [{ rel: "canonical", href: "/blog" }],
   }),
-  validateSearch: (s: Record<string, unknown>): Search => ({
+  validateSearch: (s: Record<string, unknown>): SearchParams => ({
     category: typeof s.category === "string" ? s.category : undefined,
     q: typeof s.q === "string" ? s.q : undefined,
     page: typeof s.page === "number" ? s.page : s.page ? Number(s.page) : undefined,
@@ -60,10 +60,10 @@ function BlogIndex() {
       <section className="container-wide py-10 border-b border-border">
         <div className="flex flex-col md:flex-row gap-6 md:items-center md:justify-between">
           <form
-            onSubmit={(e) => { e.preventDefault(); navigate({ search: (s) => ({ ...s, q: q || undefined, page: 1 }) }); }}
+            onSubmit={(e) => { e.preventDefault(); navigate({ search: (s: SearchParams) => ({ ...s, q: q || undefined, page: 1 }) }); }}
             className="relative w-full md:max-w-sm"
           >
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+            <SearchIcon className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
             <Input
               value={q}
               onChange={(e) => setQ(e.target.value)}
@@ -73,13 +73,13 @@ function BlogIndex() {
           </form>
           <div className="flex gap-1 flex-wrap text-sm">
             <button
-              onClick={() => navigate({ search: (s) => ({ ...s, category: undefined, page: 1 }) })}
+              onClick={() => navigate({ search: (s: SearchParams) => ({ ...s, category: undefined, page: 1 }) })}
               className={`px-3 py-1.5 border ${!search.category ? "bg-foreground text-background border-foreground" : "border-border hover:border-foreground"}`}
             >All</button>
             {categories.map((c) => (
               <button
                 key={c.id}
-                onClick={() => navigate({ search: (s) => ({ ...s, category: c.slug, page: 1 }) })}
+                onClick={() => navigate({ search: (s: SearchParams) => ({ ...s, category: c.slug, page: 1 }) })}
                 className={`px-3 py-1.5 border ${search.category === c.slug ? "bg-foreground text-background border-foreground" : "border-border hover:border-foreground"}`}
               >{c.name}</button>
             ))}
