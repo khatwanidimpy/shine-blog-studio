@@ -4,14 +4,14 @@ import { supabase } from "@/integrations/supabase/client";
 import { LayoutDashboard, FileText, FolderTree, Tags, Image as ImageIcon, User, LogOut, ExternalLink } from "lucide-react";
 import { useQueryClient } from "@tanstack/react-query";
 
-const NAV = [
+const NAV: { to: string; label: string; icon: any; exact?: boolean }[] = [
   { to: "/admin", label: "Overview", icon: LayoutDashboard, exact: true },
   { to: "/admin/blogs", label: "Essays", icon: FileText },
   { to: "/admin/categories", label: "Categories", icon: FolderTree },
   { to: "/admin/tags", label: "Tags", icon: Tags },
   { to: "/admin/media", label: "Media", icon: ImageIcon },
   { to: "/admin/profile", label: "Profile", icon: User },
-] as const;
+];
 
 export const Route = createFileRoute("/_authenticated/admin")({
   component: AdminLayout,
