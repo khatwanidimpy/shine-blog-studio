@@ -85,7 +85,7 @@ export function BlogForm({ initial, onSubmit, busy }: { initial: BlogFormValues;
         <Input
           value={v.title}
           onChange={(e) => setV({ ...v, title: e.target.value })}
-          placeholder="Essay title"
+          placeholder="Blog title"
           required
           className="font-serif !text-3xl h-auto py-3 border-0 border-b !bg-transparent rounded-none px-0 focus-visible:ring-0"
         />
@@ -118,7 +118,7 @@ export function BlogForm({ initial, onSubmit, busy }: { initial: BlogFormValues;
               value={v.content}
               onChange={(e) => setV({ ...v, content: e.target.value })}
               rows={22}
-              placeholder="Write your essay in Markdown…"
+              placeholder="Write your blog in Markdown..."
               className="border-0 rounded-none font-mono text-sm leading-relaxed"
             />
           ) : (

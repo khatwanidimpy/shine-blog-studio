@@ -23,6 +23,7 @@ import { Route as AuthenticatedAdminTagsRouteImport } from './routes/_authentica
 import { Route as AuthenticatedAdminProfileRouteImport } from './routes/_authenticated/admin/profile'
 import { Route as AuthenticatedAdminMediaRouteImport } from './routes/_authenticated/admin/media'
 import { Route as AuthenticatedAdminCategoriesRouteImport } from './routes/_authenticated/admin/categories'
+import { Route as AuthenticatedAdminBlogRouteImport } from './routes/_authenticated/admin/blog'
 import { Route as AuthenticatedAdminBlogsIndexRouteImport } from './routes/_authenticated/admin/blogs/index'
 import { Route as AuthenticatedAdminBlogsNewRouteImport } from './routes/_authenticated/admin/blogs/new'
 import { Route as AuthenticatedAdminBlogsIdRouteImport } from './routes/_authenticated/admin/blogs/$id'
@@ -98,6 +99,11 @@ const AuthenticatedAdminCategoriesRoute =
     path: '/categories',
     getParentRoute: () => AuthenticatedAdminRouteRoute,
   } as any)
+const AuthenticatedAdminBlogRoute = AuthenticatedAdminBlogRouteImport.update({
+  id: '/blog',
+  path: '/blog',
+  getParentRoute: () => AuthenticatedAdminRouteRoute,
+} as any)
 const AuthenticatedAdminBlogsIndexRoute =
   AuthenticatedAdminBlogsIndexRouteImport.update({
     id: '/blogs/',
@@ -126,6 +132,7 @@ export interface FileRoutesByFullPath {
   '/admin': typeof AuthenticatedAdminRouteRouteWithChildren
   '/blog/$slug': typeof BlogSlugRoute
   '/blog/': typeof BlogIndexRoute
+  '/admin/blog': typeof AuthenticatedAdminBlogRoute
   '/admin/categories': typeof AuthenticatedAdminCategoriesRoute
   '/admin/media': typeof AuthenticatedAdminMediaRoute
   '/admin/profile': typeof AuthenticatedAdminProfileRoute
@@ -143,6 +150,7 @@ export interface FileRoutesByTo {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/blog': typeof BlogIndexRoute
+  '/admin/blog': typeof AuthenticatedAdminBlogRoute
   '/admin/categories': typeof AuthenticatedAdminCategoriesRoute
   '/admin/media': typeof AuthenticatedAdminMediaRoute
   '/admin/profile': typeof AuthenticatedAdminProfileRoute
@@ -163,6 +171,7 @@ export interface FileRoutesById {
   '/_authenticated/admin': typeof AuthenticatedAdminRouteRouteWithChildren
   '/blog/$slug': typeof BlogSlugRoute
   '/blog/': typeof BlogIndexRoute
+  '/_authenticated/admin/blog': typeof AuthenticatedAdminBlogRoute
   '/_authenticated/admin/categories': typeof AuthenticatedAdminCategoriesRoute
   '/_authenticated/admin/media': typeof AuthenticatedAdminMediaRoute
   '/_authenticated/admin/profile': typeof AuthenticatedAdminProfileRoute
@@ -183,6 +192,7 @@ export interface FileRouteTypes {
     | '/admin'
     | '/blog/$slug'
     | '/blog/'
+    | '/admin/blog'
     | '/admin/categories'
     | '/admin/media'
     | '/admin/profile'
@@ -200,6 +210,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/blog/$slug'
     | '/blog'
+    | '/admin/blog'
     | '/admin/categories'
     | '/admin/media'
     | '/admin/profile'
@@ -219,6 +230,7 @@ export interface FileRouteTypes {
     | '/_authenticated/admin'
     | '/blog/$slug'
     | '/blog/'
+    | '/_authenticated/admin/blog'
     | '/_authenticated/admin/categories'
     | '/_authenticated/admin/media'
     | '/_authenticated/admin/profile'
@@ -340,6 +352,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAdminCategoriesRouteImport
       parentRoute: typeof AuthenticatedAdminRouteRoute
     }
+    '/_authenticated/admin/blog': {
+      id: '/_authenticated/admin/blog'
+      path: '/blog'
+      fullPath: '/admin/blog'
+      preLoaderRoute: typeof AuthenticatedAdminBlogRouteImport
+      parentRoute: typeof AuthenticatedAdminRouteRoute
+    }
     '/_authenticated/admin/blogs/': {
       id: '/_authenticated/admin/blogs/'
       path: '/blogs'
@@ -365,6 +384,7 @@ declare module '@tanstack/react-router' {
 }
 
 interface AuthenticatedAdminRouteRouteChildren {
+  AuthenticatedAdminBlogRoute: typeof AuthenticatedAdminBlogRoute
   AuthenticatedAdminCategoriesRoute: typeof AuthenticatedAdminCategoriesRoute
   AuthenticatedAdminMediaRoute: typeof AuthenticatedAdminMediaRoute
   AuthenticatedAdminProfileRoute: typeof AuthenticatedAdminProfileRoute
@@ -377,6 +397,7 @@ interface AuthenticatedAdminRouteRouteChildren {
 
 const AuthenticatedAdminRouteRouteChildren: AuthenticatedAdminRouteRouteChildren =
   {
+    AuthenticatedAdminBlogRoute: AuthenticatedAdminBlogRoute,
     AuthenticatedAdminCategoriesRoute: AuthenticatedAdminCategoriesRoute,
     AuthenticatedAdminMediaRoute: AuthenticatedAdminMediaRoute,
     AuthenticatedAdminProfileRoute: AuthenticatedAdminProfileRoute,
@@ -416,3 +437,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}

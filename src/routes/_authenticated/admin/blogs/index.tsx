@@ -33,7 +33,7 @@ function BlogsList() {
   }
 
   async function remove(id: string) {
-    if (!confirm("Delete this essay? This cannot be undone.")) return;
+    if (!confirm("Delete this blog? This cannot be undone.")) return;
     const { error } = await supabase.from("blogs").delete().eq("id", id);
     if (error) toast.error(error.message);
     else { toast.success("Deleted"); qc.invalidateQueries(); }
@@ -44,10 +44,10 @@ function BlogsList() {
       <div className="flex items-end justify-between mb-10">
         <div>
           <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground">Library</p>
-          <h1 className="font-serif text-4xl mt-2">All essays</h1>
+          <h1 className="font-serif text-4xl mt-2">All blogs</h1>
         </div>
         <Link to="/admin/blogs/new" className="inline-flex items-center gap-2 bg-foreground text-background px-4 py-2.5 text-sm hover:bg-primary">
-          <Plus className="h-4 w-4" /> New essay
+          <Plus className="h-4 w-4" /> New blog
         </Link>
       </div>
 
@@ -65,7 +65,7 @@ function BlogsList() {
           <tbody className="divide-y divide-border">
             {isLoading && <tr><td colSpan={5} className="px-5 py-10 text-center text-muted-foreground">Loading…</td></tr>}
             {!isLoading && blogs.length === 0 && (
-              <tr><td colSpan={5} className="px-5 py-10 text-center text-muted-foreground">No essays yet.</td></tr>
+              <tr><td colSpan={5} className="px-5 py-10 text-center text-muted-foreground">No blogs yet.</td></tr>
             )}
             {blogs.map((b: any) => (
               <tr key={b.id} className="hover:bg-muted/50">

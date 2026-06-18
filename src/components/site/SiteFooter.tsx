@@ -23,8 +23,8 @@ export function SiteFooter() {
           <p className="uppercase tracking-widest text-xs text-muted-foreground mb-3">Elsewhere</p>
           <div className="flex gap-4">
             <a href="https://github.com" target="_blank" rel="noreferrer" className="hover:text-primary"><Github className="h-4 w-4" /></a>
-            <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="hover:text-primary"><Linkedin className="h-4 w-4" /></a>
-            <a href="mailto:hello@example.com" className="hover:text-primary"><Mail className="h-4 w-4" /></a>
+            <a href="https://www.linkedin.com/in/dimpy-khatwani/" target="_blank" rel="noreferrer" className="hover:text-primary"><Linkedin className="h-4 w-4" /></a>
+            <a href="mailto:khatwanidimpy@gamil.com" className="hover:text-primary"><Mail className="h-4 w-4" /></a>
           </div>
         </div>
       </div>

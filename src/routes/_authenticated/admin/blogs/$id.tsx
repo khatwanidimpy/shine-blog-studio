@@ -72,8 +72,8 @@ function EditBlog() {
 
   return (
     <div className="p-10 max-w-6xl">
-      <Link to="/admin/blogs" className="text-sm text-muted-foreground hover:text-foreground inline-flex items-center gap-2 mb-6"><ArrowLeft className="h-4 w-4" /> Back to essays</Link>
-      <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground">Edit essay</p>
+      <Link to="/admin/blogs" className="text-sm text-muted-foreground hover:text-foreground inline-flex items-center gap-2 mb-6"><ArrowLeft className="h-4 w-4" /> Back to blogs</Link>
+      <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground">Edit blog</p>
       <h1 className="font-serif text-4xl mt-2 mb-8">{initial?.title || "Loading…"}</h1>
       {isLoading ? <p className="text-muted-foreground">Loading…</p> : <BlogForm initial={initial ?? EMPTY} onSubmit={save} busy={busy} />}
     </div>

@@ -6,7 +6,7 @@ import { useQueryClient } from "@tanstack/react-query";
 
 const NAV: { to: string; label: string; icon: any; exact?: boolean }[] = [
   { to: "/admin", label: "Overview", icon: LayoutDashboard, exact: true },
-  { to: "/admin/blogs", label: "Essays", icon: FileText },
+  { to: "/admin/blogs", label: "Blogs", icon: FileText },
   { to: "/admin/categories", label: "Categories", icon: FolderTree },
   { to: "/admin/tags", label: "Tags", icon: Tags },
   { to: "/admin/media", label: "Media", icon: ImageIcon },

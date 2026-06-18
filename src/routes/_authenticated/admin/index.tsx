@@ -27,7 +27,7 @@ function Dashboard() {
   });
 
   const cards = [
-    { label: "Total essays", value: stats?.total ?? 0, icon: FileText },
+    { label: "Total blogs", value: stats?.total ?? 0, icon: FileText },
     { label: "Published", value: stats?.published ?? 0, icon: CheckCircle2 },
     { label: "Drafts", value: stats?.drafts ?? 0, icon: FileEdit },
     { label: "Categories", value: stats?.categories ?? 0, icon: FolderTree },
@@ -41,7 +41,7 @@ function Dashboard() {
           <h1 className="font-serif text-4xl mt-2">Editor's desk</h1>
         </div>
         <Link to="/admin/blogs/new" className="inline-flex items-center gap-2 bg-foreground text-background px-4 py-2.5 text-sm hover:bg-primary">
-          <Plus className="h-4 w-4" /> New essay
+          <Plus className="h-4 w-4" /> New blog
         </Link>
       </div>
 
@@ -60,7 +60,7 @@ function Dashboard() {
 
       <div className="border border-border bg-card">
         <div className="px-5 py-4 border-b border-border flex justify-between items-center">
-          <h2 className="font-serif text-xl">Recent essays</h2>
+          <h2 className="font-serif text-xl">Recent blogs</h2>
           <Link to="/admin/blogs" className="text-xs text-primary hover:underline">View all →</Link>
         </div>
         <ul className="divide-y divide-border">
@@ -71,7 +71,7 @@ function Dashboard() {
             </li>
           ))}
           {(stats?.recent ?? []).length === 0 && (
-            <li className="px-5 py-10 text-center text-muted-foreground text-sm">No essays yet. <Link to="/admin/blogs/new" className="text-primary">Write the first one →</Link></li>
+            <li className="px-5 py-10 text-center text-muted-foreground text-sm">No blogs yet. <Link to="/admin/blogs/new" className="text-primary">Write the first one</Link></li>
           )}
         </ul>
       </div>

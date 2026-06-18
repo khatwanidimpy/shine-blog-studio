@@ -42,7 +42,7 @@ function ContactPage() {
     setSending(true);
     const subject = encodeURIComponent(`Hello from ${result.data.name}`);
     const body = encodeURIComponent(`${result.data.message}\n\n— ${result.data.name} (${result.data.email})`);
-    window.location.href = `mailto:hello@example.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:khatwanidimpy@gamil.com?subject=${subject}&body=${body}`;
     setTimeout(() => setSending(false), 800);
   }
 
@@ -59,11 +59,11 @@ function ContactPage() {
           </p>
 
           <div className="mt-12 space-y-4 text-sm">
-            <a href="mailto:hello@example.com" className="flex items-center gap-3 hover:text-primary">
-              <Mail className="h-4 w-4" /> hello@example.com
+            <a href="mailto:khatwanidimpy@gamil.com" className="flex items-center gap-3 hover:text-primary">
+              <Mail className="h-4 w-4" /> khatwanidimpy@gamil.com
             </a>
-            <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="flex items-center gap-3 hover:text-primary">
-              <Linkedin className="h-4 w-4" /> /in/dimpy
+            <a href="https://www.linkedin.com/in/dimpy-khatwani/" target="_blank" rel="noreferrer" className="flex items-center gap-3 hover:text-primary">
+              <Linkedin className="h-4 w-4" /> /in/dimpy-khatwani
             </a>
             <a href="https://github.com" target="_blank" rel="noreferrer" className="flex items-center gap-3 hover:text-primary">
               <Github className="h-4 w-4" /> /dimpy
