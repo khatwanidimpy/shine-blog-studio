@@ -29,7 +29,7 @@ const BLOG_SELECT = `
   category_id, author_id,
   category:categories(id, name, slug),
   blog_tags(tag:tags(id, name, slug)),
-  author:profiles!blogs_author_id_fkey(name, avatar_url)
+  author:profiles!blogs_author_profile_fk(name, avatar_url)
 ` as const;
 
 function shape(row: any): BlogWithRelations {
