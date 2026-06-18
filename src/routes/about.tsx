@@ -217,17 +217,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="container-wide py-14 border-t border-border">
-        <div className="grid gap-6 border border-border bg-foreground p-8 text-background md:grid-cols-[1fr_auto] md:items-center">
-          <div>
-            <p className="text-xs uppercase tracking-[0.25em] opacity-70">Certification</p>
-            <h2 className="mt-3 font-serif text-3xl">AWS Certified Cloud Practitioner</h2>
-          </div>
-          <div className="inline-flex h-14 w-14 items-center justify-center border border-background/25 text-primary-foreground">
-            <Cloud className="h-6 w-6" />
-          </div>
-        </div>
-      </section>
+      
 
       <SiteFooter />
     </div>
