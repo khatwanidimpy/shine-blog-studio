@@ -64,7 +64,7 @@ function AdminLayout() {
             return (
               <Link
                 key={n.to}
-                to={n.to}
+                to={n.to as any}
                 className={`flex items-center gap-3 px-3 py-2 rounded transition-colors ${active ? "bg-foreground text-background" : "text-muted-foreground hover:text-foreground hover:bg-muted"}`}
               >
                 <Icon className="h-4 w-4" /> {n.label}
