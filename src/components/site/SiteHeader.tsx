@@ -18,8 +18,9 @@ export function SiteHeader() {
   return (
     <header className="border-b border-border bg-background/80 backdrop-blur sticky top-0 z-40">
       <div className="container-wide flex items-center justify-between h-16">
-        <Link to="/" className="font-serif text-xl tracking-tight">
-          Dimpy<span className="text-primary">.</span>
+        <Link to="/" className="flex items-center gap-2 font-serif text-xl tracking-tight hover:opacity-80 transition-opacity">
+          <img src="/logo.svg" alt="Dimpy" className="w-8 h-8 text-primary" />
+          <span>Dimpy<span className="text-primary">.</span></span>
         </Link>
         <nav className="hidden md:flex items-center gap-8 text-sm">
           {NAV.map((n) => {

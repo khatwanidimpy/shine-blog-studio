@@ -1,0 +1,6 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Logo design: stylized 'D' monogram -->
+  <circle cx="16" cy="16" r="15" fill="none" stroke="currentColor" stroke-width="2"/>
+  <path d="M10 8 L16 8 C20 8 23 11 23 16 C23 21 20 24 16 24 L10 24 Z M10 16 L16 16 C19 16 21 18 21 20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <circle cx="16" cy="16" r="3" fill="currentColor" opacity="0.6"/>
+</svg>
